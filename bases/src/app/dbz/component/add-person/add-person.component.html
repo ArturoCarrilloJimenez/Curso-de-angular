@@ -1,0 +1,10 @@
+<h4>Agregar Personaje</h4>
+
+<form (ngSubmit)="addCharter()">
+  <input type="text" [(ngModel)]="character.name" name="name" class="form-control mb-2" placeholder="Nombre">
+
+  <input type="number" [(ngModel)]="character.pawer" name="pawer" class="form-control mb-2" placeholder="Poder">
+
+  <button type="submit" class="btn btn-primary w-100">Agregar</button>
+
+</form>

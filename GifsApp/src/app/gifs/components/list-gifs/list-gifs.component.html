@@ -1,0 +1,5 @@
+<div class="row">
+  <div class="col-md-3 col-sm-6" *ngFor="let item of gifsList">
+      <gifs-card-list [title]="item.title" [imageURL]="item.images.downsized_medium.url" [textAlter]="item.alt_text"></gifs-card-list>
+  </div>
+</div>
