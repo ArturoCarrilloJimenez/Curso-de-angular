@@ -1,1 +1,13 @@
-<p>by-capital-page works!</p>
+<h2>Por Capital</h2>
+<hr>
+<div class="row">
+  <div class="col">
+    <sheared-search-box (onValue)="searchByCapital($event)" [placeholder]="'Buscar Capital'"></sheared-search-box>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <hr>
+    <country-table [countries]="countries"></country-table>
+  </div>
+</div>
