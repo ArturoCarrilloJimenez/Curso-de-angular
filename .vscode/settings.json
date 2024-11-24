@@ -9,5 +9,8 @@
         "angular-page": {
             "skipChangeDetectionOnPush": true
         }
-    }
+    },
+    "cSpell.words": [
+        "debouncer"
+    ]
 }

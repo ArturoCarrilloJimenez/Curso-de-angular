@@ -1,20 +1,40 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { debounceTime, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'sheared-search-box',
   templateUrl: './search-box.component.html',
   styleUrl: './search-box.component.css',
 })
-export class SearchBoxComponent {
-  @ViewChild('inputText')
-  term!: ElementRef<HTMLInputElement>;
+export class SearchBoxComponent implements OnInit, OnDestroy {
+  private debouncerSubscriptions?: Subscription;
+  private debouncer = new Subject<string>();
 
-  @Input() public placeholder: string = ''
+  @Input() public placeholder: string = '';
 
   @Output()
-  public onValue: EventEmitter<string> = new EventEmitter()
+  public onValue = new EventEmitter<string>();
 
-  emitValue (): void {
-    this.onValue.emit(this.term.nativeElement.value)
+  ngOnInit(): void {
+    this.debouncerSubscriptions = this.debouncer.pipe(debounceTime(300)).subscribe((value) => {
+      this.onValue.emit(value);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.debouncerSubscriptions?.unsubscribe()
+  }
+
+  onKeyPress(searchTem: string) {
+    this.debouncer.next(searchTem);
   }
 }

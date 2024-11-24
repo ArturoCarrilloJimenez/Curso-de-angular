@@ -8,6 +8,8 @@
 <div class="row">
   <div class="col">
     <hr>
+    <sheared-loading-spener *ngIf="isLoading"></sheared-loading-spener>
+
     <country-table [countries]="countries"></country-table>
   </div>
 </div>
