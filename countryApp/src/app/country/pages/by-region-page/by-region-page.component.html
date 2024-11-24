@@ -2,9 +2,10 @@
 <hr>
 <div class="row">
   <div class="col">
-    <sheared-search-box (onValue)="searchByRegion($event)" [placeholder]="'Buscar Capital'"></sheared-search-box>
+    <button *ngFor="let region of regionsValid" class="btn mx-2" [ngClass]="{'btn-outline-primary': selectedRegion === region}" (click)="searchByRegion(region)">{{ region }}</button>
   </div>
 </div>
+
 <div class="row">
   <div class="col">
     <hr>
