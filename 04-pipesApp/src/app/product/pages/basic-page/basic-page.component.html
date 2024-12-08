@@ -1,0 +1,65 @@
+<p-panel header="Pipes básicos" class="p-1 ">
+  <h1>Pipes básicos</h1>
+  <p>Pipes incluidos en angular - Usualmente en el Command Module</p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="uppercase">
+      {{ nameLower | uppercase }}
+    </p-card>
+  </div>
+  <div class=" col-12 md:col-4">
+    <p-card header="lowercase">
+      {{ nameUpper | lowercase }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-4">
+    <p-card header="titlecase">
+      {{ nameComplete | titlecase }}
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-card header="date">
+      <ul>
+        <li>fecha</li>
+        <li>fecha | date</li>
+        <li>fecha | date: 'sort'</li>
+        <li>fecha | date: 'long'</li>
+        <li>fecha | date: 'MMMM'</li>
+        <li>fecha | date: 'MMMM dd, yyyy'</li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li>fecha | date: 'long': 'GMT-2'</li>
+        <li>fecha | date: 'long': 'GMT+4'</li>
+        <li>fecha | date: 'long': '' : 'fr-CA' </li>
+      </ul>
+
+    </p-card>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-card header="date">
+      <ul>
+        <li>{{ customData }}</li>
+        <li>{{ customData | date }}</li>
+        <li>{{ customData | date: 'sort' }}</li>
+        <li>{{ customData | date: 'long' }}</li>
+        <li>{{ customData | date: 'MMMM' }}</li>
+        <li>{{ customData | date: 'MMMM dd, yyyy' }}</li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li>{{ customData | date: 'long': 'GMT-2' }}</li>
+        <li>{{ customData | date: 'long': 'GMT+4' }}</li>
+         <!--! NO FUNCIONA LA LOCALIDAD, EN TEORÍA ES ASI-->
+        <li>{{ customData | date: 'long' : '' : 'fr-CA' }}</li>
+      </ul>
+
+    </p-card>
+  </div>
+</div>

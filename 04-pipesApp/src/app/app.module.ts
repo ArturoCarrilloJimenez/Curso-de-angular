@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared/sheared.module';
+import { ProductModule } from './product/product.module';
 
 
 
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/sheared.module';
     BrowserAnimationsModule,
     AppRoutingModule,
 
-    SharedModule
+    SharedModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]

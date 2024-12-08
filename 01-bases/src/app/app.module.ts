@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,18 +7,26 @@ import { AppComponent } from './app.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { DbzModule } from './dbz/dbz.module';
 
+// Configuración del local
+import localeEsES from '@angular/common/locales/es';
+import localeFrCA from '@angular/common/locales/fr-CA';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEsES);
+registerLocaleData(localeFrCA);
+
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CounterModule,
     HeroesModule,
-    DbzModule
+    DbzModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-ES' }
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,19 +1,23 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BasicsPageComponent } from './pages/basics-page/basics-page.component';
+import { NgModule } from '@angular/core';
+import { PrimengModule } from '../primeng/primeng.module';
+
 import { NumberPageComponent } from './pages/number-page/number-page.component';
 import { UncomonPageComponent } from './pages/uncomon-page/uncomon-page.component';
+import { BasicPageComponent } from './pages/basic-page/basic-page.component';
 
 
 
 @NgModule({
   declarations: [
-    BasicsPageComponent,
+    BasicPageComponent,
     NumberPageComponent,
-    UncomonPageComponent
+    UncomonPageComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    PrimengModule
+  ],
+
 })
 export class ProductModule { }
