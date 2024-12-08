@@ -56,7 +56,8 @@
       <ul>
         <li>{{ customData | date: 'long': 'GMT-2' }}</li>
         <li>{{ customData | date: 'long': 'GMT+4' }}</li>
-         <!--! NO FUNCIONA LA LOCALIDAD, EN TEORÍA ES ASI-->
+
+        <!-- TODO NO FUNCIONA LA LOCALIDAD, EN TEORÍA ES ASI-->
         <li>{{ customData | date: 'long' : '' : 'fr-CA' }}</li>
       </ul>
 
