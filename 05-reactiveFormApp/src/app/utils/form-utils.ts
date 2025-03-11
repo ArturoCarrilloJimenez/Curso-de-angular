@@ -1,16 +1,7 @@
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormGroup, ValidationErrors } from '@angular/forms';
 
 export class FormUtils {
-  static isValidField(form: FormGroup, fielName: string): boolean | null {
-    return form.controls[fielName].errors && form.controls[fielName].touched;
-  }
-
-  static getFielError(form: FormGroup, fielName: string): string | null {
-    if (!form.controls[fielName]) return null;
-
-    // Obtengo los errores
-    const errors = form.controls[fielName].errors ?? {};
-
+  static errorController(errors: ValidationErrors): string | null {
     for (let key of Object.keys(errors)) {
       // Según el error muestro un mensaje distinto
       switch (key) {
@@ -26,5 +17,33 @@ export class FormUtils {
     }
 
     return null;
+  }
+
+  static isValidField(form: FormGroup, fielName: string): boolean | null {
+    return form.controls[fielName].errors && form.controls[fielName].touched;
+  }
+
+  static getFielError(form: FormGroup, fielName: string): string | null {
+    if (!form.controls[fielName]) return null;
+
+    // Obtengo los errores
+    const errors = form.controls[fielName].errors ?? {};
+
+    return this.errorController(errors);
+  }
+
+  static isValidFieldInArray(formArray: FormArray, index: number) {
+    return (
+      formArray.controls[index].errors && formArray.controls[index].touched
+    );
+  }
+
+  static getFielArrayError(form: FormArray, index: number): string | null {
+    if (form.controls.length == 0) return null;
+
+    // Obtengo los errores
+    const errors = form.controls[index].errors ?? {};
+
+    return this.errorController(errors);
   }
 }

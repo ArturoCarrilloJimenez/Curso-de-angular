@@ -22,7 +22,7 @@ export class BasicPageComponent {
   //   inStorage: new FormControl(0),
   // });
 
-  formBider = inject(FormBuilder);
+  private formBider = inject(FormBuilder);
 
   myForm: FormGroup = this.formBider.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
