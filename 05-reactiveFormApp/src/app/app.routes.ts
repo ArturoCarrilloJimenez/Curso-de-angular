@@ -10,8 +10,8 @@ export const routes: Routes = [
     loadChildren: () => import('./county/page/country.routes'),
   },
   {
-    path: 'country',
-    loadChildren: () => import('./county/page/country.routes'),
+    path: 'auth',
+    loadChildren: () => import('./auth/page/auth.routes'),
   },
   {
     path: '**',
