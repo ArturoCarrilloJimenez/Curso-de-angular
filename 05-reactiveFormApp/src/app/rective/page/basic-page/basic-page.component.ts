@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { FormUtils } from '../../../utils/form-utils';
 
 @Component({
   selector: 'app-basic-page',
@@ -29,35 +30,7 @@ export class BasicPageComponent {
     inStorage: [0, [Validators.required, Validators.min(0)]],
   });
 
-  isValidField(fielName: string): boolean | null {
-    return (
-      this.myForm.controls[fielName].errors &&
-      this.myForm.controls[fielName].touched
-    );
-  }
-
-  getFielError(fielName: string): string | null {
-    if (!this.myForm.controls[fielName]) return null;
-
-    // Obtengo los errores
-    const errors = this.myForm.controls[fielName].errors ?? {};
-
-    for (let key of Object.keys(errors)) {
-      // Según el error muestro un mensaje distinto
-      switch (key) {
-        case 'required':
-          return 'Este campo es requerido';
-
-        case 'minlength':
-          return `Mínimo de ${errors['minlength'].requiredLength} caracteres`;
-
-        case 'min':
-          return `Debe ser mayor de ${errors['min'].min}`;
-      }
-    }
-
-    return null;
-  }
+  formUtil = FormUtils;
 
   onSave() {
     if (this.myForm.invalid) {
