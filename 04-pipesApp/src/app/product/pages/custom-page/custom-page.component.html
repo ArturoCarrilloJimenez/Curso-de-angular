@@ -1,0 +1,44 @@
+<p-panel header="Pipes básicos" class="p-1">
+  <h1>Pipes personalizados</h1>
+  <p>Pipes no incluidos en angular - Estos son custom, los creas tu</p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12">
+    <p-card header="ToggleCasePipe">
+      <p>{{ name() | toggleCase : upper() }}</p>
+      <p>origin: {{ name() }}</p>
+      <p-button (click)="upper.set(!upper())" label="Change"></p-button>
+    </p-card>
+    <br />
+    <p-card header="Pipes personalizados">
+      <div>
+        <input type="text" pInputText placeholder="Buscar por nombre" (input)="filterBy.set(filterText.value)" #filterText/>
+
+        <h3>Filter by {{ sortBy() }} </h3>
+        <p-button (click)="updateSortBy('name')" (click)="isOrderAscend()" class="mr-2" label="nombre"></p-button>
+        <p-button (click)="updateSortBy('canFly')" (click)="isOrderAscend()" class="mr-2" label="valor"></p-button>
+        <p-button (click)="updateSortBy('color')" (click)="isOrderAscend()" class="mr-2" label="color"></p-button>
+        <p-button (click)="updateSortBy('creator')" (click)="isOrderAscend()" class="mr-2" label="creador"></p-button>
+      </div>
+      <p-table [value]="heroes() | filterHero: filterBy()| heroShotBy: sortBy(): orderAscend()" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th>Puede volar</th>
+            <th>Color</th>
+            <th>Creador</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-hero>
+          <tr>
+            <td>{{ hero.name }}</td>
+            <td [ngStyle]="hero.canFly && {'color': 'yellow'} || {'color': 'green'}">{{ hero.canFly | canFly }}</td>
+            <td [style.color]="hero.color | heroTextColor ">{{ hero.color | heroColor }}</td>
+            <td>{{ hero.creator | creatorHero }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>
